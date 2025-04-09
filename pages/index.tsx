@@ -1,127 +1,63 @@
-import Image from "next/image";
-import Link from "next/link";
+import React from "react"; import Image from "next/image"; import Slider from "react-slick"; import "slick-carousel/slick/slick.css"; import "slick-carousel/slick/slick-theme.css";
 
-export default function Home() {
-  return (
-    <main className="min-h-screen bg-white text-gray-800 px-4 md:px-12 py-10 font-sans">
-      {" "}
-      {/* Hero Section */}{" "}
-      <section className="text-center max-w-3xl mx-auto py-10">
-        {" "}
-        <h1 className="text-4xl md:text-6xl font-bold mb-4 leading-tight">
-          {" "}
-          Elevate Your Phone’s Style with{" "}
-          <span className="text-black">
-            Premium Transparent Cases and Custom Skins. Protection and Beauty in
-            One.
-          </span>{" "}
-        </h1>{" "}
-        <p className="text-lg text-gray-600 mb-6">
-          {" "}
-          YOUR PHONE. YOUR STYLE. FULL PROTECTION.{" "}
-        </p>{" "}
-        <Link
-          href="https://wa.me/918553855378"
-          className="inline-block bg-green-600 text-white px-6 py-3 rounded-full text-lg hover:bg-green-700 transition"
-        >
-          {" "}
-          Contact on WhatsApp{" "}
-        </Link>{" "}
-      </section>
-      {/* How It Works Section */}
-      <section className="bg-gray-100 rounded-xl p-8 my-12 max-w-4xl mx-auto">
-        <h2 className="text-2xl font-semibold text-center mb-6">
-          How It Works
-        </h2>
-        <div className="grid md:grid-cols-3 gap-6 text-center">
-          <div>
-            <Image
-              src="/icons/choose.svg"
-              alt="Choose"
-              width={64}
-              height={64}
-              className="mx-auto mb-2"
-            />
-            <p>Choose your favorite skin design</p>
-          </div>
-          <div>
-            <Image
-              src="/icons/apply.svg"
-              alt="Apply"
-              width={64}
-              height={64}
-              className="mx-auto mb-2"
-            />
-            <p>Apply it on your phone carefully</p>
-          </div>
-          <div>
-            <Image
-              src="/icons/protect.svg"
-              alt="Protect"
-              width={64}
-              height={64}
-              className="mx-auto mb-2"
-            />
-            <p>Finish it with an iPaky case</p>
-          </div>
+const highlights = [ "We Deal in All Original Products of BOAT, APPLE, SAMSUNG, and PORTRONICS.", "We Sell All the Original Products at the Best Price Possible.", "Trust is Our First Priority, 100% Original Quality in All the Products that we Sell.", "We Deal in Premium Quality Skins of All Mobile Phones, At the Best Price.", "We are The First Brand to Make Mobile Skins and Transparent Cases Combo(for every model)." ];
+
+const IndexPage = () => { const highlightSettings = { dots: false, infinite: true, speed: 500, slidesToShow: 1, slidesToScroll: 1, autoplay: true, autoplaySpeed: 5000, arrows: false };
+
+const posterSettings = { dots: true, infinite: true, speed: 500, slidesToShow: 1, slidesToScroll: 1, autoplay: true, autoplaySpeed: 3000, arrows: false };
+
+return ( <div className="bg-white min-h-screen"> <header className="p-4"> <h1 className="text-red-600 text-2xl font-light">Hinglaj Telecom</h1> </header>
+
+<div className="bg-gray-100 py-2">
+    <Slider {...highlightSettings}>
+      {highlights.map((text, index) => (
+        <div key={index} className="text-center text-black text-sm font-light">
+          {text}
         </div>
-      </section>
-      {/* Design Gallery Preview */}
-      <section className="max-w-6xl mx-auto">
-        <h2 className="text-2xl font-semibold text-center mb-6">
-          Skin Designs Preview
-        </h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="bg-white rounded-xl shadow-md overflow-hidden">
-            <Image
-              src="/designs/astronaut.jpg"
-              alt="Astronaut Design"
-              width={400}
-              height={400}
-              className="w-full"
-            />
-          </div>
-          <div className="bg-white rounded-xl shadow-md overflow-hidden">
-            <Image
-              src="/designs/samurai.jpg"
-              alt="Samurai Design"
-              width={400}
-              height={400}
-              className="w-full"
-            />
-          </div>
-          {/* Add more designs later */}
-        </div>
-      </section>
-      {/* Benefits Section */}
-      <section className="bg-gray-50 py-10 mt-16">
-        <div className="max-w-5xl mx-auto grid md:grid-cols-4 gap-6 text-center">
-          <div>
-            <p className="font-semibold">No Yellowing</p>
-          </div>
-          <div>
-            <p className="font-semibold">Scratch Protection</p>
-          </div>
-          <div>
-            <p className="font-semibold">Premium Look</p>
-          </div>
-          <div>
-            <p className="font-semibold">Customizable</p>
-          </div>
-        </div>
-      </section>
-      {/* Final WhatsApp CTA */}
-      <section className="text-center py-10">
-        <p className="text-lg mb-4">
-          Tell us your phone model & preferred design
+      ))}
+    </Slider>
+  </div>
+
+  <div className="mt-6 max-w-3xl mx-auto px-4">
+    <Slider {...posterSettings}>
+      {/* Replace with real product images */}
+      <div>
+        <Image
+          src="/poster1.jpg"
+          alt="Poster 1"
+          width={800}
+          height={500}
+          className="rounded-lg"
+        />
+        <p className="text-center mt-2 text-black font-medium">
+          Premium boAt Airdopes - Original and Best Price
         </p>
-        <Link
-          href="https://wa.me/918553855378"
-          className="inline-block bg-green-600 text-white px-8 py-3 rounded-full text-lg hover:bg-green-700 transition"
-        >
-          Message on WhatsApp
-        </Link>
-      </section>
-    </main>
-  );
-}
+      </div>
+      <div>
+        <Image
+          src="/poster2.jpg"
+          alt="Poster 2"
+          width={800}
+          height={500}
+          className="rounded-lg"
+        />
+        <p className="text-center mt-2 text-black font-medium">
+          Custom Skins + Transparent iPaky Case Combo
+        </p>
+      </div>
+    </Slider>
+  </div>
+
+  <a
+    href="https://wa.me/91XXXXXXXXXX"
+    className="fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded-full shadow-lg hover:bg-green-600"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    WhatsApp Us
+  </a>
+</div>
+
+); };
+
+export default IndexPage;
