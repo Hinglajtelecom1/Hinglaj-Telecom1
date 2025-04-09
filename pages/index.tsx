@@ -1,6 +1,6 @@
 import React from "react"; import Image from "next/image"; import Slider from "react-slick"; import "slick-carousel/slick/slick.css"; import "slick-carousel/slick/slick-theme.css";
 
-const highlights = [ "We Deal in All Original Products of BOAT, APPLE, SAMSUNG, and PORTRONICS.", "We Sell All the Original Products at the Best Price Possible.", "Trust is Our First Priority, 100% Original Quality in All the Products that we Sell.", "We Deal in Premium Quality Skins of All Mobile Phones, At the Best Price.", "We are The First Brand to Make Mobile Skins and Transparent Cases Combo(for every model)." ];
+const highlights = [ "We Deal in All Original Products of BOAT, APPLE, SAMSUNG, and PORTRONICS.", "We Sell All the Original Products at the Best Price Possible.", "Trust is Our First Priority, 100% Original Quality in All the Products that we Sell.", "We Deal in Premium Quality Skins of All Mobile Phones, At the Best Price.", "We are The First Brand to Make Mobile Skins and Transparent Cases Combo(for Every Model)." ];
 
 const IndexPage = () => { const highlightSettings = { dots: false, infinite: true, speed: 500, slidesToShow: 1, slidesToScroll: 1, autoplay: true, autoplaySpeed: 5000, arrows: false };
 
