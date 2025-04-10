@@ -5,73 +5,91 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const highlights = [
-  "We Deal in All Original Products of BOAT, APPLE, SAMSUNG, and PORTRONICS.",
-  "We Sell All the Original Products at the Best Price Possible.",
-  "Trust is Our First Priority, 100% Original Quality in All the Products that we Sell.",
-  "We Deal in Premium Quality Skins of All Mobile Phones, At the Best Price.",
-  "We are The First Brand to Make Mobile Skins and Transparent Cases Combo(for Every Model)."
+  "We deal in All original products of BOAT, APPLE, SAMSUNG, and PORTRONICS.",
+  "We sell all the original products at the best price possible.",
+  "Trust is our first priority, 100% original quality in all the products that we sell.",
+  "We deal in Premium quality Skins of all mobile phones, at the best price.",
+  "We are the First Brand to Make Mobile Skins and Transparent Cases Combo(for every model).",
 ];
 
 const posterImages = [
-  "https://via.placeholder.com/800x600/000000/FFFFFF?text=Poster+1",
-  "https://via.placeholder.com/800x600/111111/FFFFFF?text=Poster+2",
-  "https://via.placeholder.com/800x600/222222/FFFFFF?text=Poster+3",
-  "https://via.placeholder.com/800x600/333333/FFFFFF?text=Poster+4"
+  "https://picsum.photos/1200/700?random=1",
+  "https://picsum.photos/1200/700?random=2",
+  "https://picsum.photos/1200/700?random=3",
+  "https://picsum.photos/1200/700?random=4",
 ];
 
 const posterCaptions = [
-  "BOAT Immortal Airspeed Pro - Most Trending Model",
-  "Premium Transparent Case with Custom Skin - Only at Hinglaj Telecom",
-  "Original Accessories from APPLE, SAMSUNG & PORTRONICS",
-  "First Brand to Offer Mobile Skin + Transparent Case Combo"
+  "Premium Skins for Every Phone Model",
+  "Original BOAT Products at Best Price",
+  "Transparent iPaky Case + Skin Combo",
+  "Original Samsung, Apple, and More",
 ];
 
-const Home = () => {
-  const sliderSettings = {
-    dots: false,
+const HomePage = () => {
+  const posterSettings = {
+    dots: true,
     infinite: true,
-    autoplay: true,
-    speed: 800,
-    autoplaySpeed: 3000,
+    speed: 700,
     slidesToShow: 1,
     slidesToScroll: 1,
-    arrows: false
+    autoplay: true,
+    autoplaySpeed: 3000,
   };
 
   return (
-    <div style={{ backgroundColor: "#ffffff", fontFamily: "sans-serif" }}>
-      {/* Header */}
-      <header className="p-4">
-        <h1 style={{ color: "red", fontWeight: 300, fontSize: "24px" }}>
+    <div style={{ backgroundColor: "#f8f8f8", minHeight: "100vh" }}>
+      {/* Top Bar */}
+      <div style={{ padding: "15px", display: "flex", alignItems: "center" }}>
+        <h1 style={{ color: "red", fontWeight: "400", fontSize: "1.8rem" }}>
           Hinglaj Telecom
         </h1>
-      </header>
+      </div>
 
-      {/* Highlights */}
-      <div className="overflow-hidden whitespace-nowrap border-y py-2">
-        <div className="animate-slide inline-block text-sm text-black font-light">
-          {highlights.map((text, index) => (
-            <span key={index} className="mx-10 inline-block">
+      {/* Highlights Slider */}
+      <div style={{ overflow: "hidden", whiteSpace: "nowrap" }}>
+        <div
+          style={{
+            display: "inline-block",
+            animation: "scroll-left 30s linear infinite",
+            fontSize: "1rem",
+            fontWeight: 400,
+            color: "#000",
+            padding: "10px 20px",
+          }}
+        >
+          {highlights.map((text, idx) => (
+            <span key={idx} style={{ marginRight: "80px" }}>
               {text}
             </span>
           ))}
         </div>
       </div>
 
-      {/* Poster Slider */}
-      <div className="w-full h-[80vh] relative">
-        <Slider {...sliderSettings}>
+      {/* Posters */}
+      <div style={{ maxWidth: "100%", margin: "0 auto", padding: "20px" }}>
+        <Slider {...posterSettings}>
           {posterImages.map((src, index) => (
-            <div key={index} className="relative w-full h-[80vh]">
+            <div key={index}>
               <Image
                 src={src}
                 alt={Poster ${index + 1}}
-                layout="fill"
+                width={1200}
+                height={700}
+                layout="responsive"
                 objectFit="cover"
               />
-              <div className="absolute bottom-0 bg-white/80 w-full text-center py-4">
-                <p className="text-black text-base font-medium">{posterCaptions[index]}</p>
-              </div>
+              <p
+                style={{
+                  textAlign: "center",
+                  fontSize: "1.2rem",
+                  fontWeight: "500",
+                  color: "#111",
+                  marginTop: "10px",
+                }}
+              >
+                {posterCaptions[index]}
+              </p>
             </div>
           ))}
         </Slider>
@@ -82,19 +100,25 @@ const Home = () => {
         href="https://wa.me/91XXXXXXXXXX"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-4 right-4 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full shadow-lg"
+        style={{
+          position: "fixed",
+          bottom: "20px",
+          right: "20px",
+          backgroundColor: "#25D366",
+          color: "#fff",
+          padding: "14px 18px",
+          borderRadius: "50%",
+          fontSize: "20px",
+          boxShadow: "0px 4px 12px rgba(0,0,0,0.2)",
+          zIndex: 1000,
+        }}
       >
-        WhatsApp
+        WA
       </a>
 
+      {/* Animation CSS */}
       <style jsx>{`
-        .animate-slide {
-          display: inline-block;
-          white-space: nowrap;
-          animation: slideLeft 25s linear infinite;
-        }
-
-        @keyframes slideLeft {
+        @keyframes scroll-left {
           0% {
             transform: translateX(100%);
           }
@@ -107,4 +131,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;
