@@ -5,32 +5,37 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const highlights = [
-  "We deal in All original products of BOAT, APPLE, SAMSUNG, and PORTRONICS.",
-  "We sell all the original products at the best price possible.",
-  "Trust is our first priority, 100% original quality in all the products that we sell.",
-  "We deal in Premium quality Skins of all mobile phones, at the best price.",
-  "We are the First Brand to Make Mobile Skins and Transparent Cases Combo(for every model).",
+  "We Deal in All Original Products of BOAT, APPLE, SAMSUNG, and PORTRONICS.",
+  "We Sell All the Original Products at the Best Price Possible.",
+  "Trust is Our First Priority, 100% Original Quality in All the Products that we Sell.",
+  "We Deal in Premium Quality Skins of All Mobile Phones, At the Best Price.",
+  "We are The First Brand to Make Mobile Skins and Transparent Cases Combo(for Every Model).",
 ];
 
-const posterImages = [
-  "https://picsum.photos/1200/700?random=1",
-  "https://picsum.photos/1200/700?random=2",
-  "https://picsum.photos/1200/700?random=3",
-  "https://picsum.photos/1200/700?random=4",
+const posterData = [
+  {
+    src: "/poster1.jpg",
+    caption: "boAt Immortal Airspeed Pro - At Best Price",
+  },
+  {
+    src: "/poster2.jpg",
+    caption: "Premium Mobile Skins with Transparent Case - Available Now",
+  },
+  {
+    src: "/poster3.jpg",
+    caption: "Original Apple Accessories - Trust Hinglaj Telecom",
+  },
+  {
+    src: "/poster4.jpg",
+    caption: "Best Deals on Portronics Products - Limited Stock!",
+  },
 ];
 
-const posterCaptions = [
-  "Premium Skins for Every Phone Model",
-  "Original BOAT Products at Best Price",
-  "Transparent iPaky Case + Skin Combo",
-  "Original Samsung, Apple, and More",
-];
-
-const HomePage = () => {
-  const posterSettings = {
+const Home = () => {
+  const sliderSettings = {
     dots: true,
     infinite: true,
-    speed: 700,
+    speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
@@ -38,87 +43,106 @@ const HomePage = () => {
   };
 
   return (
-    <div style={{ backgroundColor: "#f8f8f8", minHeight: "100vh" }}>
-      {/* Top Bar */}
-      <div style={{ padding: "15px", display: "flex", alignItems: "center" }}>
-        <h1 style={{ color: "red", fontWeight: "400", fontSize: "1.8rem" }}>
-          Hinglaj Telecom
-        </h1>
-      </div>
-
-      {/* Highlights Slider */}
-      <div style={{ overflow: "hidden", whiteSpace: "nowrap" }}>
-        <div
+    <div
+      style={{
+        backgroundColor: "#f9f9f9",
+        minHeight: "100vh",
+        fontFamily: "sans-serif",
+      }}
+    >
+      {" "}
+      <header
+        style={{
+          padding: "20px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-start",
+        }}
+      >
+        {" "}
+        <h1
           style={{
-            display: "inline-block",
-            animation: "scroll-left 30s linear infinite",
-            fontSize: "1rem",
+            color: "#ff0000",
             fontWeight: 400,
-            color: "#000",
-            padding: "10px 20px",
+            fontSize: "24px",
+            marginBottom: "10px",
           }}
         >
-          {highlights.map((text, idx) => (
-            <span key={idx} style={{ marginRight: "80px" }}>
-              {text}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {/* Posters */}
-      <div style={{ maxWidth: "100%", margin: "0 auto", padding: "20px" }}>
-        <Slider {...posterSettings}>
-          {posterImages.map((src, index) => (
+          {" "}
+          Hinglaj Telecom{" "}
+        </h1>{" "}
+        <div
+          style={{ overflow: "hidden", whiteSpace: "nowrap", width: "100%" }}
+        >
+          {" "}
+          <div
+            style={{
+              display: "inline-block",
+              animation: "scroll 30s linear infinite",
+              fontWeight: 300,
+              fontSize: "14px",
+              color: "#000",
+            }}
+          >
+            {" "}
+            {highlights.map((text, index) => (
+              <span key={index} style={{ paddingRight: "100px" }}>
+                {text}
+              </span>
+            ))}{" "}
+          </div>{" "}
+        </div>{" "}
+      </header>
+      <main>
+        <Slider {...sliderSettings}>
+          {posterData.map((poster, index) => (
             <div key={index}>
-              <Image
-                src={src}
-                alt={"Poster ${index + 1}"}
-                width={1200}
-                height={700}
-                layout="responsive"
-                objectFit="cover"
-              />
-              <p
-                style={{
-                  textAlign: "center",
-                  fontSize: "1.2rem",
-                  fontWeight: "500",
-                  color: "#111",
-                  marginTop: "10px",
-                }}
-              >
-                {posterCaptions[index]}
-              </p>
+              <div style={{ height: "80vh", position: "relative" }}>
+                <Image
+                  src={poster.src}
+                  alt={"Poster ${index + 1}"}
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </div>
+              <div style={{ padding: "10px 20px", textAlign: "left" }}>
+                <p
+                  style={{
+                    fontWeight: "bold",
+                    fontSize: "18px",
+                    color: "#000",
+                  }}
+                >
+                  {poster.caption}
+                </p>
+              </div>
             </div>
           ))}
         </Slider>
-      </div>
-
-      {/* WhatsApp Button */}
+      </main>
       <a
         href="https://wa.me/91XXXXXXXXXX"
-        target="_blank"
-        rel="noopener noreferrer"
         style={{
           position: "fixed",
-          bottom: "20px",
-          right: "20px",
+          bottom: 20,
+          right: 20,
           backgroundColor: "#25D366",
-          color: "#fff",
-          padding: "14px 18px",
+          color: "white",
           borderRadius: "50%",
-          fontSize: "20px",
-          boxShadow: "0px 4px 12px rgba(0,0,0,0.2)",
+          width: 60,
+          height: 60,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          fontSize: 30,
+          textDecoration: "none",
           zIndex: 1000,
         }}
       >
         WA
       </a>
-
-      {/* Animation CSS */}
-      <style jsx>{`
-        @keyframes scroll-left {
+      <style jsx global>{`
+        @keyframes scroll {
           0% {
             transform: translateX(100%);
           }
@@ -131,4 +155,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Home;
