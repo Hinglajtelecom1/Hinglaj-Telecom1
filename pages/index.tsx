@@ -9,113 +9,102 @@ const highlights = [
   "We Sell All the Original Products at the Best Price Possible.",
   "Trust is Our First Priority, 100% Original Quality in All the Products that we Sell.",
   "We Deal in Premium Quality Skins of All Mobile Phones, At the Best Price.",
-  "We are The First Brand to Make Mobile Skins and Transparent Cases Combo(for Every Model).",
+  "We are The First Brand to Make Mobile Skins and Transparent Cases Combo(for Every Model)."
 ];
 
-const posters = [
-  {
-    src: "/poster1.jpg",
-    caption: "boAt Immortal Airspeed Pro at Best Price",
-  },
-  {
-    src: "/poster2.jpg",
-    caption: "Premium Skins for Every Mobile Model",
-  },
-  {
-    src: "/poster3.jpg",
-    caption: "Combo: Transparent Case + Custom Skin",
-  },
-  {
-    src: "/poster4.jpg",
-    caption: "Original Samsung, Apple, and Portronics Products",
-  },
+const posterImages = [
+  "/poster1.jpg",
+  "/poster2.jpg",
+  "/poster3.jpg",
+  "/poster4.jpg"
 ];
 
-const HomePage = () => {
-  const settings = {
-    dots: true,
+const posterCaptions = [
+  "BOAT Immortal Airspeed Pro - At Best Price",
+  "Premium Transparent Case with Custom Skin - Only at Hinglaj Telecom",
+  "Original Accessories from APPLE, SAMSUNG & PORTRONICS",
+  "First Brand to Offer Mobile Skin + Transparent Case Combo"
+];
+
+const Home = () => {
+  const sliderSettings = {
+    dots: false,
     infinite: true,
     autoplay: true,
+    speed: 800,
     autoplaySpeed: 3000,
-    speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    arrows: false
   };
 
   return (
-    <div style={{ backgroundColor: "#f9f9f9", fontFamily: "sans-serif" }}>
-      <header style={{ padding: "20px" }}>
-        <h1 style={{ color: "red", fontWeight: "400", fontSize: "24px" }}>
+    <div style={{ backgroundColor: "#ffffff", fontFamily: "sans-serif" }}>
+      {/* Header */}
+      <header className="p-4">
+        <h1 style={{ color: "red", fontWeight: 300, fontSize: "24px" }}>
           Hinglaj Telecom
         </h1>
-        <marquee
-          behavior="scroll"
-          direction="left"
-          scrollamount="4"
-          style={{ color: "#000", fontSize: "14px", marginTop: "5px" }}
-        >
-          {highlights.join("   |   ")}
-        </marquee>
       </header>
 
-      <section style={{ position: "relative", width: "100%", height: "80vh" }}>
-        <Slider {...settings}>
-          {posters.map((poster, index) => (
-            <div key={index} style={{ position: "relative", height: "70vh" }}>
+      {/* Highlights */}
+      <div className="overflow-hidden whitespace-nowrap border-y py-2">
+        <div className="animate-slide inline-block text-sm text-black font-light">
+          {highlights.map((text, index) => (
+            <span key={index} className="mx-10 inline-block">
+              {text}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* Poster Slider */}
+      <div className="w-full h-[80vh] relative">
+        <Slider {...sliderSettings}>
+          {posterImages.map((src, index) => (
+            <div key={index} className="relative w-full h-[80vh]">
               <Image
-                src={poster.src}
+                src={src}
                 alt={Poster ${index + 1}}
                 layout="fill"
                 objectFit="cover"
               />
-              <div
-                style={{
-                  position: "absolute",
-                  bottom: 0,
-                  width: "100%",
-                  padding: "15px",
-                  background: "rgba(255, 255, 255, 0.9)",
-                  textAlign: "center",
-                  fontWeight: "600",
-                  fontSize: "18px",
-                  color: "#000",
-                }}
-              >
-                {poster.caption}
+              <div className="absolute bottom-0 bg-white/80 w-full text-center py-4">
+                <p className="text-black text-base font-medium">{posterCaptions[index]}</p>
               </div>
             </div>
           ))}
         </Slider>
-      </section>
+      </div>
 
       {/* WhatsApp Button */}
       <a
-        href="https://wa.me/your-number"
+        href="https://wa.me/91XXXXXXXXXX"
         target="_blank"
         rel="noopener noreferrer"
-        style={{
-          position: "fixed",
-          bottom: "20px",
-          right: "20px",
-          backgroundColor: "#25D366",
-          borderRadius: "50%",
-          width: "60px",
-          height: "60px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          boxShadow: "0 2px 10px rgba(0,0,0,0.3)",
-          zIndex: 999,
-        }}
+        className="fixed bottom-4 right-4 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full shadow-lg"
       >
-        <img
-          src="/whatsapp-icon.png"
-          alt="WhatsApp"
-          style={{ width: "30px", height: "30px" }}
-        />
+        WhatsApp
       </a>
+
+      <style jsx>{`
+        .animate-slide {
+          display: inline-block;
+          white-space: nowrap;
+          animation: slideLeft 25s linear infinite;
+        }
+
+        @keyframes slideLeft {
+          0% {
+            transform: translateX(100%);
+          }
+          100% {
+            transform: translateX(-100%);
+          }
+        }
+      `}</style>
     </div>
   );
 };
 
-export default HomePage;
+export default Home;
