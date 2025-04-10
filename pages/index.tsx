@@ -13,10 +13,10 @@ const highlights = [
 ];
 
 const posterImages = [
-  "/poster1.jpg",
-  "/poster2.jpg",
-  "/poster3.jpg",
-  "/poster4.jpg"
+  "https://via.placeholder.com/800x600/000000/FFFFFF?text=Poster+1",
+  "https://via.placeholder.com/800x600/111111/FFFFFF?text=Poster+2",
+  "https://via.placeholder.com/800x600/222222/FFFFFF?text=Poster+3",
+  "https://via.placeholder.com/800x600/333333/FFFFFF?text=Poster+4"
 ];
 
 const posterCaptions = [
