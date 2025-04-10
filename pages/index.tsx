@@ -1,63 +1,121 @@
-import React from "react"; import Image from "next/image"; import Slider from "react-slick"; import "slick-carousel/slick/slick.css"; import "slick-carousel/slick/slick-theme.css";
+import React from "react";
+import Image from "next/image";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-const highlights = [ "We Deal in All Original Products of BOAT, APPLE, SAMSUNG, and PORTRONICS.", "We Sell All the Original Products at the Best Price Possible.", "Trust is Our First Priority, 100% Original Quality in All the Products that we Sell.", "We Deal in Premium Quality Skins of All Mobile Phones, At the Best Price.", "We are The First Brand to Make Mobile Skins and Transparent Cases Combo(for Every Model)." ];
+const highlights = [
+  "We Deal in All Original Products of BOAT, APPLE, SAMSUNG, and PORTRONICS.",
+  "We Sell All the Original Products at the Best Price Possible.",
+  "Trust is Our First Priority, 100% Original Quality in All the Products that we Sell.",
+  "We Deal in Premium Quality Skins of All Mobile Phones, At the Best Price.",
+  "We are The First Brand to Make Mobile Skins and Transparent Cases Combo(for Every Model).",
+];
 
-const IndexPage = () => { const highlightSettings = { dots: false, infinite: true, speed: 500, slidesToShow: 1, slidesToScroll: 1, autoplay: true, autoplaySpeed: 5000, arrows: false };
+const posters = [
+  {
+    src: "/poster1.jpg",
+    caption: "boAt Immortal Airspeed Pro at Best Price",
+  },
+  {
+    src: "/poster2.jpg",
+    caption: "Premium Skins for Every Mobile Model",
+  },
+  {
+    src: "/poster3.jpg",
+    caption: "Combo: Transparent Case + Custom Skin",
+  },
+  {
+    src: "/poster4.jpg",
+    caption: "Original Samsung, Apple, and Portronics Products",
+  },
+];
 
-const posterSettings = { dots: true, infinite: true, speed: 500, slidesToShow: 1, slidesToScroll: 1, autoplay: true, autoplaySpeed: 3000, arrows: false };
+const HomePage = () => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
 
-return ( <div className="bg-white min-h-screen"> <header className="p-4"> <h1 className="text-red-600 text-2xl font-light">Hinglaj Telecom</h1> </header>
+  return (
+    <div style={{ backgroundColor: "#f9f9f9", fontFamily: "sans-serif" }}>
+      <header style={{ padding: "20px" }}>
+        <h1 style={{ color: "red", fontWeight: "400", fontSize: "24px" }}>
+          Hinglaj Telecom
+        </h1>
+        <marquee
+          behavior="scroll"
+          direction="left"
+          scrollamount="4"
+          style={{ color: "#000", fontSize: "14px", marginTop: "5px" }}
+        >
+          {highlights.join("   |   ")}
+        </marquee>
+      </header>
 
-<div className="bg-gray-100 py-2">
-    <Slider {...highlightSettings}>
-      {highlights.map((text, index) => (
-        <div key={index} className="text-center text-black text-sm font-light">
-          {text}
-        </div>
-      ))}
-    </Slider>
-  </div>
+      <section style={{ position: "relative", width: "100%", height: "80vh" }}>
+        <Slider {...settings}>
+          {posters.map((poster, index) => (
+            <div key={index} style={{ position: "relative", height: "70vh" }}>
+              <Image
+                src={poster.src}
+                alt={Poster ${index + 1}}
+                layout="fill"
+                objectFit="cover"
+              />
+              <div
+                style={{
+                  position: "absolute",
+                  bottom: 0,
+                  width: "100%",
+                  padding: "15px",
+                  background: "rgba(255, 255, 255, 0.9)",
+                  textAlign: "center",
+                  fontWeight: "600",
+                  fontSize: "18px",
+                  color: "#000",
+                }}
+              >
+                {poster.caption}
+              </div>
+            </div>
+          ))}
+        </Slider>
+      </section>
 
-  <div className="mt-6 max-w-3xl mx-auto px-4">
-    <Slider {...posterSettings}>
-      {/* Replace with real product images */}
-      <div>
-        <Image
-          src="/poster1.jpg"
-          alt="Poster 1"
-          width={800}
-          height={500}
-          className="rounded-lg"
+      {/* WhatsApp Button */}
+      <a
+        href="https://wa.me/your-number"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          position: "fixed",
+          bottom: "20px",
+          right: "20px",
+          backgroundColor: "#25D366",
+          borderRadius: "50%",
+          width: "60px",
+          height: "60px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          boxShadow: "0 2px 10px rgba(0,0,0,0.3)",
+          zIndex: 999,
+        }}
+      >
+        <img
+          src="/whatsapp-icon.png"
+          alt="WhatsApp"
+          style={{ width: "30px", height: "30px" }}
         />
-        <p className="text-center mt-2 text-black font-medium">
-          Premium boAt Airdopes - Original and Best Price
-        </p>
-      </div>
-      <div>
-        <Image
-          src="/poster2.jpg"
-          alt="Poster 2"
-          width={800}
-          height={500}
-          className="rounded-lg"
-        />
-        <p className="text-center mt-2 text-black font-medium">
-          Custom Skins + Transparent iPaky Case Combo
-        </p>
-      </div>
-    </Slider>
-  </div>
+      </a>
+    </div>
+  );
+};
 
-  <a
-    href="https://wa.me/91XXXXXXXXXX"
-    className="fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded-full shadow-lg hover:bg-green-600"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    WhatsApp Us
-  </a>
-</div>
-
-); };
-
-export default IndexPage;
+export default HomePage;
