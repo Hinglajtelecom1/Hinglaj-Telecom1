@@ -20,7 +20,7 @@ const posterImages = [
 ];
 
 const posterCaptions = [
-  "BOAT Immortal Airspeed Pro - At Best Price",
+  "BOAT Immortal Airspeed Pro - Most Trending Model",
   "Premium Transparent Case with Custom Skin - Only at Hinglaj Telecom",
   "Original Accessories from APPLE, SAMSUNG & PORTRONICS",
   "First Brand to Offer Mobile Skin + Transparent Case Combo"
