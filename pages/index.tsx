@@ -73,7 +73,7 @@ const HomePage = () => {
             <div key={index}>
               <Image
                 src={src}
-                alt={Poster ${index + 1}}
+                alt={"Poster ${index + 1}"}
                 width={1200}
                 height={700}
                 layout="responsive"
