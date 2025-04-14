@@ -69,7 +69,7 @@ export default function Home() {
             <div key={index} className="relative w-full h-[80vh]">
               <Image
                 src={poster.src}
-                alt={Poster ${index + 1}}
+                alt={'Poster ${index + 1}'}
                 layout="fill"
                 objectFit="cover"
               />
