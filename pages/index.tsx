@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -12,147 +12,84 @@ const highlights = [
   "We are The First Brand to Make Mobile Skins and Transparent Cases Combo(for Every Model).",
 ];
 
-const posterData = [
-  {
-    src: "/poster1.jpg",
-    caption: "boAt Immortal Airspeed Pro - At Best Price",
-  },
-  {
-    src: "/poster2.jpg",
-    caption: "Premium Mobile Skins with Transparent Case - Available Now",
-  },
-  {
-    src: "/poster3.jpg",
-    caption: "Original Apple Accessories - Trust Hinglaj Telecom",
-  },
-  {
-    src: "/poster4.jpg",
-    caption: "Best Deals on Portronics Products - Limited Stock!",
-  },
+const posters = [
+  { src: "/poster1.jpg", caption: "Premium boAt Airspeed Pro at Best Price" },
+  { src: "/poster2.jpg", caption: "Custom Skins + iPaky Case Combo for Every Model" },
+  { src: "/poster3.jpg", caption: "All Original Samsung & Apple Accessories Available" },
+  { src: "/poster4.jpg", caption: "Layered 3M Skins for Ultimate Style and Protection" },
 ];
 
-const Home = () => {
-  const sliderSettings = {
-    dots: true,
+export default function Home() {
+  const [currentHighlight, setCurrentHighlight] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentHighlight((prev) => (prev + 1) % highlights.length);
+    }, 7000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const posterSettings = {
+    dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
   };
 
   return (
     <div
+      className="min-h-screen"
       style={{
-        backgroundColor: "#f9f9f9",
-        minHeight: "100vh",
-        fontFamily: "sans-serif",
+        background: "rgba(255, 255, 255, 0.85)",
+        backdropFilter: "blur(10px)",
+        WebkitBackdropFilter: "blur(10px)",
       }}
     >
-      {" "}
-      <header
-        style={{
-          padding: "20px",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "flex-start",
-        }}
-      >
-        {" "}
-        <h1
-          style={{
-            color: "#ff0000",
-            fontWeight: 400,
-            fontSize: "24px",
-            marginBottom: "10px",
-          }}
-        >
-          {" "}
-          Hinglaj Telecom{" "}
-        </h1>{" "}
-        <div
-          style={{ overflow: "hidden", whiteSpace: "nowrap", width: "100%" }}
-        >
-          {" "}
-          <div
-            style={{
-              display: "inline-block",
-              animation: "scroll 30s linear infinite",
-              fontWeight: 300,
-              fontSize: "14px",
-              color: "#000",
-            }}
-          >
-            {" "}
-            {highlights.map((text, index) => (
-              <span key={index} style={{ paddingRight: "100px" }}>
-                {text}
-              </span>
-            ))}{" "}
-          </div>{" "}
-        </div>{" "}
-      </header>
-      <main>
-        <Slider {...sliderSettings}>
-          {posterData.map((poster, index) => (
-            <div key={index}>
-              <div style={{ height: "80vh", position: "relative" }}>
-                <Image
-                  src={poster.src}
-                  alt={"Poster ${index + 1}"}
-                  layout="fill"
-                  objectFit="cover"
-                />
-              </div>
-              <div style={{ padding: "10px 20px", textAlign: "left" }}>
-                <p
-                  style={{
-                    fontWeight: "bold",
-                    fontSize: "18px",
-                    color: "#000",
-                  }}
-                >
-                  {poster.caption}
-                </p>
-              </div>
+      <div className="px-4 py-2">
+        <h1 className="text-red-600 font-light text-2xl">Hinglaj Telecom</h1>
+        <div className="mt-2 text-sm text-black transition-all duration-500">
+          {highlights[currentHighlight]}
+        </div>
+      </div>
+
+      <div className="mt-4">
+        <Slider {...posterSettings}>
+          {posters.map((poster, index) => (
+            <div key={index} className="relative w-full h-[80vh]">
+              <Image
+                src={poster.src}
+                alt={Poster ${index + 1}}
+                layout="fill"
+                objectFit="cover"
+                className="rounded-md"
+              />
             </div>
           ))}
         </Slider>
-      </main>
+        <div className="text-left text-black font-semibold text-md px-4 mt-2">
+          {posters.map((poster, index) => (
+            <div
+              key={index}
+              style={{ display: index === 0 ? "block" : "none" }}
+            >
+              {poster.caption}
+            </div>
+          ))}
+        </div>
+      </div>
+
       <a
         href="https://wa.me/91XXXXXXXXXX"
-        style={{
-          position: "fixed",
-          bottom: 20,
-          right: 20,
-          backgroundColor: "#25D366",
-          color: "white",
-          borderRadius: "50%",
-          width: 60,
-          height: 60,
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          fontSize: 30,
-          textDecoration: "none",
-          zIndex: 1000,
-        }}
+        className="fixed bottom-5 right-5 bg-green-500 text-white p-3 rounded-full shadow-lg"
+        target="_blank"
+        rel="noopener noreferrer"
       >
-        WA
+        WhatsApp
       </a>
-      <style jsx global>{`
-        @keyframes scroll {
-          0% {
-            transform: translateX(100%);
-          }
-          100% {
-            transform: translateX(-100%);
-          }
-        }
-      `}</style>
     </div>
   );
-};
-
-export default Home;
+}
