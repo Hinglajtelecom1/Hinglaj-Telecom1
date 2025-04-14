@@ -60,7 +60,7 @@ export default function Home() {
             transition: "transform 0.5s ease",
             transform: 'translateX(-${currentHighlight * 100}%)',
             display: "flex",
-            width: ${highlights.length * 100}%,
+            width: '${highlights.length * 100}%',
           }}
         >
           {highlights.map((text, index) => (
