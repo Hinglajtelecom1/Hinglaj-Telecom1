@@ -24,8 +24,8 @@ export default function HomePageHero() {
         <div
           className="flex transition-transform duration-500 ease-in-out"
           style={{
-            transform: translateX(-${current * 100}%),
-            width: ${highlights.length * 100}%,
+            transform: 'translateX(-${current * 100}%)',
+            width: '${highlights.length * 100}%',
           }}
         >
           {highlights.map((text, index) => (
