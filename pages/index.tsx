@@ -76,7 +76,7 @@ export default function Home() {
         <Slider {...posterSettings}>
           {posters.map((src, index) => (
             <div key={index} style={{ position: "relative", width: "100%", height: "80vh" }}>
-              <Image src={src} alt={Poster ${index + 1}} layout="fill" objectFit="cover" />
+              <Image src={src} alt={'Poster ${index + 1}'} layout="fill" objectFit="cover" />
             </div>
           ))}
         </Slider>
