@@ -58,7 +58,7 @@ export default function Home() {
           style={{
             position: "absolute",
             transition: "transform 0.5s ease",
-            transform: translateX(-${currentHighlight * 100}%),
+            transform: CSSTranslate(-${currentHighlight * 100}%),
             display: "flex",
             width: ${highlights.length * 100}%,
           }}
