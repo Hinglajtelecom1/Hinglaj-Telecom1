@@ -1,32 +1,33 @@
-import React, { useState, useEffect } from "react";
-import Image from "next/image";
+"use client";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
+import Image from "next/image";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const highlights = [
-  "We deal in All original products of BOAT, APPLE, SAMSUNG, and PORTRONICS.",
-  "We sell all the original products at the best price possible.",
-  "Trust is our first priority, 100% original quality in all the products that we sell.",
-  "We deal in Premium quality Skins of all mobile phones, at the best price.",
-  "We are the First Brand to Make Mobile Skins and Transparent Cases Combo(for every model)."
+  "We Deal in All Original Products of BOAT, APPLE, SAMSUNG, and PORTRONICS.",
+  "We Sell All the Original Products at the Best Price Possible.",
+  "Trust is Our First Priority, 100% Original Quality in All the Products that we Sell.",
+  "We Deal in Premium Quality Skins of All Mobile Phones, At the Best Price.",
+  "We are The First Brand to Make Mobile Skins and Transparent Cases Combo(for Every Model).",
 ];
 
-const posters = [
+const posterImages = [
   "/poster1.jpg",
   "/poster2.jpg",
   "/poster3.jpg",
-  "/poster4.jpg"
+  "/poster4.jpg",
 ];
 
-const captions = [
-  "Immortal Airspeed Pro at Best Price",
-  "Custom Mobile Skins & Cases Combo",
-  "All Original Accessories from Top Brands",
-  "Premium Quality, Perfect Fit, Low Price"
+const posterCaptions = [
+  "Immortal Airspeed Pro - At Best Price",
+  "Premium Transparent Cases with Skins",
+  "Original Hearables | 100% Trusted",
+  "Custom Skins for Every Mobile Model",
 ];
 
-export default function Home() {
+const Home = () => {
   const [currentHighlight, setCurrentHighlight] = useState(0);
 
   useEffect(() => {
@@ -42,82 +43,93 @@ export default function Home() {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: false
+    autoplay: false,
   };
 
   return (
-    <div style={{ background: "#f8f8f8", minHeight: "100vh", padding: "1rem" }}>
-      <h1 style={{ color: "red", fontWeight: "400", fontSize: "24px" }}>Hinglaj Telecom</h1>
+    <div
+      style={{
+        background: "#f8f8f8",
+        minHeight: "100vh",
+        padding: "1rem",
+        fontFamily: "sans-serif",
+      }}
+    >
+      {/* Title */}
+      <h1
+        style={{
+          color: "red",
+          fontWeight: "600",
+          fontSize: "24px",
+          marginBottom: "1rem",
+        }}
+      >
+        Hinglaj Telecom
+      </h1>
+
+      {/* Highlights */}
       <div
         style={{
-          margin: "1rem 0",
-          fontSize: "16px",
-          fontWeight: "300",
           overflow: "hidden",
-          whiteSpace: "nowrap",
+          height: "30px",
           position: "relative",
-          height: "30px"
+          marginBottom: "1.5rem",
         }}
       >
         <div
           style={{
-            position: "absolute",
-            transition: "transform 0.5s ease",
-            transform: `translateX(-${currentHighlight * 100}%)`,
             display: "flex",
-            width: `${highlights.length * 100}%`
+            width: `${highlights.length * 100}%`,
+            transform: `translateX(-${currentHighlight * (100 / highlights.length)}%)`,
+            transition: "transform 0.6s ease-in-out",
           }}
         >
           {highlights.map((text, index) => (
-            <div key={index} style={{ width: "100%", paddingRight: "1rem" }}>
+            <div
+              key={index}
+              style={{
+                width: `${100 / highlights.length}%`,
+                fontWeight: "500",
+                fontSize: "14px",
+                whiteSpace: "nowrap",
+              }}
+            >
               {text}
             </div>
           ))}
         </div>
       </div>
 
-      <div style={{ width: "100%", height: "80vh" }}>
+      {/* Poster Slider */}
+      <div style={{ width: "100%", height: "80vh", marginBottom: "1rem" }}>
         <Slider {...posterSettings}>
-          {posters.map((src, index) => (
+          {posterImages.map((src, index) => (
             <div key={index}>
               <Image
                 src={src}
                 alt={`Poster ${index + 1}`}
                 width={1080}
-                height={1350}
-                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                height={1920}
+                style={{
+                  width: "100%",
+                  height: "80vh",
+                  objectFit: "cover",
+                  borderRadius: "12px",
+                }}
               />
-              <p style={{ fontWeight: "700", fontSize: "16px", textAlign: "left", padding: "0.5rem" }}>
-                {captions[index]}
-              </p>
             </div>
           ))}
         </Slider>
       </div>
 
-      <a
-        href="https://wa.me/yourwhatsapplink"
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{
-          position: "fixed",
-          bottom: "20px",
-          right: "20px",
-          backgroundColor: "#25D366",
-          color: "white",
-          borderRadius: "50%",
-          width: "60px",
-          height: "60px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          fontSize: "30px",
-          textDecoration: "none",
-          zIndex: 1000
-        }}
-      >
-        &#x2709;
-      </a>
+      {/* Captions */}
+      <div style={{ fontWeight: "600", fontSize: "16px", textAlign: "left", paddingLeft: "4px" }}>
+        {posterCaptions.map((caption, index) => (
+          <div key={index}>{caption}</div>
+        ))}
+      </div>
     </div>
   );
-}
+};
+
+export default Home;
