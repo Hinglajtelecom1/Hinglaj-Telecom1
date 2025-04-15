@@ -9,7 +9,7 @@ const highlights = [
   "We Sell All the Original Products at the Best Price Possible.",
   "Trust is Our First Priority,Original Quality in All the Products Sold.",
   "We Deal in Premium Quality Skins of All Mobile Phones, At the Best Price.",
-  "First Brand to Make Mobile Skins and Transparent Cases Combo(Every Model).",
+  "First to Make Mobile Skins Transparent Cases Combo(Every Model).",
 ];
 
 const posters = [
