@@ -5,11 +5,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const highlights = [
-  "We Deal in All Original Products of BOAT, APPLE, SAMSUNG, and PORTRONICS.",
+  "Original Products of BOAT, APPLE, SAMSUNG, and PORTRONICS.",
   "We Sell All the Original Products at the Best Price Possible.",
-  "Trust is Our First Priority, 100% Original Quality in All the Products that we Sell.",
+  "Trust is Our First Priority,Original Quality in All the Products Sold.",
   "We Deal in Premium Quality Skins of All Mobile Phones, At the Best Price.",
-  "We are The First Brand to Make Mobile Skins and Transparent Cases Combo (for Every Model).",
+  "First Brand to Make Mobile Skins and Transparent Cases Combo(Every Model).",
 ];
 
 const posters = [
